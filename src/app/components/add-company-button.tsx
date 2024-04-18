@@ -10,7 +10,7 @@ const CompanyFormModal = dynamic(() => import('./company-form-modal'), {
 });
 
 export default function AddCompanyButton() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState<boolean>(false);
 
   return (
     <>
