@@ -6,17 +6,16 @@ import ToolBar from '../../components/toolbar';
 import AddCompanyButton from '../../components/add-company-button';
 import CompanyTable from '../../components/company-table';
 import CompanyRow from '../../components/company-row';
+import { SideBar } from '../../components/side-bar';
 
 import { Status } from '../../components/status-label';
 
-export interface PageProps {
-  params: { id: string };
-}
+export interface PageProps {}
 
-export default function CompaniesPage({params}: PageProps) {
+export default function CompaniesPage({}: PageProps) {
   return (
     <>
-      <Header>Companies ({params.id})</Header>
+      <Header>Companies</Header>
       <ToolBar action={<AddCompanyButton />}>
         <SearchInput />
       </ToolBar>
