@@ -1,11 +1,21 @@
+'use client';
+
 import React from 'react';
 
 import Image from 'next/image';
-import SideBarItem from './side-bat-item';
+import SideBarItem from './side-bar-item';
+import { usePathname, useRouter } from 'next/navigation';
 
 export interface SideBarProps {}
 
 export function SideBar({}: SideBarProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleExitClick = () => {
+    router.push('/');
+  };
+
   return (
     <aside className="fixed top-0 left-0 z-40 w-60 h-screen">
       <div className="flex flex-col h-full bg-gray-900">
@@ -18,6 +28,7 @@ export function SideBar({}: SideBarProps) {
         />
         <ul className="space-y-7">
           <SideBarItem
+            current={pathname === '/dashbord'}
             pathname="/dashbord"
             src="/icons/briefcase.svg"
             alt="dashbord icon"
@@ -25,6 +36,7 @@ export function SideBar({}: SideBarProps) {
             Dashbord
           </SideBarItem>
           <SideBarItem
+            current={pathname === '/companies'}
             pathname="/companies"
             src="/icons/squares.svg"
             alt="companies icon"
@@ -32,7 +44,10 @@ export function SideBar({}: SideBarProps) {
             Companies
           </SideBarItem>
         </ul>
-        <button className="flex items-center gap-2 p-6 mt-auto mx-auto">
+        <button
+          className="flex items-center gap-2 p-6 mt-auto mx-auto"
+          onClick={handleExitClick}
+        >
           <Image
             width={18}
             height={18}
